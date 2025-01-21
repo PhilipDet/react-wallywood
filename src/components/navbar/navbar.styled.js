@@ -6,7 +6,10 @@ export const NavbarStyled = styled.nav`
 
     ul {
         display: flex;
+        align-items: center;
         max-width: 1000px;
+        margin: 0 auto;
+        border-bottom: 1.5px solid #5C1F06;
 
         li {
             list-style: none;
@@ -14,11 +17,22 @@ export const NavbarStyled = styled.nav`
             a {
                 text-decoration: none;
                 color: #333;
-                padding: 20px;
+                padding: 0 20px;
+                font-family: "Titillium Web", serif;
+                font-size: 1.8rem;
+                text-transform: uppercase;
+                font-weight: 300;
             }
 
-            &:nth-first-child {
-                margin-left: auto;
+            &:first-child {
+                margin-right: auto;
+
+                a {
+                    color: #d97852;
+                    font-weight: 900;
+                    font-size: 5.4rem;
+                    text-transform: uppercase;
+                }
             }
         }
     }
