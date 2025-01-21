@@ -27,3 +27,19 @@ export const FrontpagePoster = ({ poster }) => {
         </FrontpagePosterStyled>
     );
 };
+
+export const Poster = ({ poster }) => {
+    return (
+        <PosterStyled>
+            <img src={poster.image} alt={poster.name} />
+            <div className="information">
+                <strong>{poster.name}</strong>
+                <p>Kr. {poster.price},00</p>
+                <div className="actions">
+                    <Button>Læg i kurv</Button>
+                    <Button></Button>
+                </div>
+            </div>
+        </PosterStyled>
+    );
+};
