@@ -1,15 +1,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./App.jsx";
-import { PostersProvider } from "./providers/posters.jsx";
 import { BrowserRouter } from "react-router-dom";
 
 createRoot(document.getElementById("root")).render(
     <StrictMode>
-        <PostersProvider>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
-        </PostersProvider>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
     </StrictMode>
 );
