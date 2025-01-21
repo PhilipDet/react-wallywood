@@ -7,6 +7,8 @@ import { Headline } from "./components/headline/headline";
 import { Home } from "./pages/home/home";
 import { Posters } from "./pages/posters/posters";
 import { About } from "./pages/about/about";
+import { Contact } from "./pages/contact/contact";
+import { Login } from "./pages/login/login";
 
 export const App = () => {
     return (
@@ -20,6 +22,8 @@ export const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/posters" element={<Posters />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/login" element={<Login />} />
             </Routes>
             <Footer />
         </>
