@@ -7,6 +7,7 @@ import { GlobalStyled } from "./global.styled";
 createRoot(document.getElementById("root")).render(
     <StrictMode>
         <BrowserRouter>
+            <GlobalStyled />
             <App />
         </BrowserRouter>
     </StrictMode>

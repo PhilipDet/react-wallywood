@@ -14,12 +14,15 @@ export const GlobalStyled = createGlobalStyle`
     body {
         font-family: "Open Sans", serif;
         background-color: #5C1F06;
+        display: flex;
+        justify-content: center;
     }
 
     #root {
         height: 100vh;
         max-width: 1080px;
-        margin: 0 auto;
+        width: 100%;
         background-color: white;
+        padding: 40px;
     }
 `;
