@@ -8,7 +8,9 @@ export const PostersProvider = ({ children }) => {
 
     const getData = async () => {
         try {
-            const data = await fetchData("http://localhost:2024/posters");
+            const data = await fetchData(
+                "https://wallywood.vercel.app/posters"
+            );
             setPosters(data);
         } catch (error) {
             console.error("Error fetching posters in Provider:", error);
