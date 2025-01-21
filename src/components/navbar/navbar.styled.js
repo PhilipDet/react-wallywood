@@ -9,7 +9,7 @@ export const NavbarStyled = styled.nav`
         align-items: center;
         max-width: 1000px;
         margin: 0 auto;
-        border-bottom: 2px solid #5C1F06;
+        border-bottom: 1.5px solid #5C1F06;
 
         li {
             list-style: none;
