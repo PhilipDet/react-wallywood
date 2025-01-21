@@ -6,6 +6,9 @@ export const Navbar = () => {
         <NavbarStyled>
             <ul>
                 <li>
+                    <NavLink to="/">Wallywood</NavLink>
+                </li>
+                <li>
                     <NavLink to="/">Home</NavLink>
                 </li>
                 <li>
@@ -19,6 +22,9 @@ export const Navbar = () => {
                 </li>
                 <li>
                     <NavLink to="/login">Login</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/cart"><img src="src/assets/cart.svg" alt="" /></NavLink>
                 </li>
             </ul>
         </NavbarStyled>
