@@ -9,4 +9,13 @@ export const ButtonStyled = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    cursor: pointer;
+
+    transition: all 0.2s;
+
+    &:hover {
+        background-color:rgb(241, 209, 196);
+        scale: 1.05;
+    }
 `;
