@@ -38,6 +38,37 @@ export const FrontpagePosterStyled = styled.div`
     }
 `;
 
-export const PosterStyled = styled.div``;
+export const PosterStyled = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+        height: 208px;
+        width: 140px;
+    }
+
+    .information {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        strong {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1.4rem;
+            font-weight: 400;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+    }
+`;
 
 export const ProductStyled = styled.div``;

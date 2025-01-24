@@ -37,7 +37,9 @@ export const Poster = ({ poster }) => {
                 <p>Kr. {poster.price},00</p>
                 <div className="actions">
                     <Button>Læg i kurv</Button>
-                    <Button></Button>
+                    <Button type="square">
+                        <FaRegHeart />
+                    </Button>
                 </div>
             </div>
         </PosterStyled>
