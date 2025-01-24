@@ -13,17 +13,34 @@ export const Contact = () => {
             <form onSubmit={(event) => handleSubmit(event)}>
                 <div className="form-group">
                     <label htmlFor="name">Dit Navn:</label>
-                    <input placeholder="Indtast Dit Navn" required type="text" id="name" name="name" />
+                    <input
+                        placeholder="Indtast Dit Navn"
+                        required
+                        type="text"
+                        id="name"
+                        name="name"
+                    />
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="email">Din Email:</label>
-                    <input placeholder="Indtast Din Email" required type="email" id="email" name="email" />
+                    <input
+                        placeholder="Indtast Din Email"
+                        required
+                        type="email"
+                        id="email"
+                        name="email"
+                    />
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="message">Din Besked:</label>
-                    <textarea placeholder="Indtast En Besked" required id="message" name="message"></textarea>
+                    <textarea
+                        placeholder="Indtast En Besked"
+                        required
+                        id="message"
+                        name="message"
+                    ></textarea>
                 </div>
 
                 <div className="actions">

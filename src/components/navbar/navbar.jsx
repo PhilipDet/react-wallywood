@@ -12,7 +12,7 @@ export const Navbar = () => {
                     <NavLink to="/">Home</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/posters">Plakater</NavLink>
+                    <NavLink to="/posters/0">Plakater</NavLink>
                 </li>
                 <li>
                     <NavLink to="/about">Om Os</NavLink>
@@ -24,7 +24,9 @@ export const Navbar = () => {
                     <NavLink to="/login">Login</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/cart"><img src="src/assets/cart.svg" alt="" /></NavLink>
+                    <NavLink to="/cart">
+                        <img src="src/assets/cart.svg" alt="" />
+                    </NavLink>
                 </li>
             </ul>
         </NavbarStyled>

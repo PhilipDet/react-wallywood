@@ -11,8 +11,6 @@ export const Headline = () => {
         switch (path) {
             case "/":
                 return <img src="./src/assets/curtain.jpg" />;
-            case "/posters":
-                return <h2>Plakater</h2>;
             case "/about":
                 return <h2>Om os</h2>;
             case "/contact":
@@ -22,6 +20,9 @@ export const Headline = () => {
             case "/register":
                 return <h2>Registering</h2>;
             default:
+                if (path.includes("/posters")) {
+                    return <h2>Plakater</h2>;
+                }
                 return <h2>404</h2>;
         }
     };

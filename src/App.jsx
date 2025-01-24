@@ -11,6 +11,9 @@ import { About } from "./pages/about/about";
 import { Contact } from "./pages/contact/contact";
 import { Login } from "./pages/login/login";
 
+// Components
+import { PosterList } from "./components/posterList/posterList";
+
 export const App = () => {
     return (
         <>
@@ -21,8 +24,14 @@ export const App = () => {
 
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/posters" element={<Posters />} />
-                <Route path="/about" element={<About />} />
+                <Route path="/posters" element={<Posters />}>
+                    <Route path=":genre_id" element={<PosterList />} />
+                    <Route
+                        path=":genre_id/:poster_id"
+                        element={<h3>Poster details</h3>}
+                    />
+                </Route>
+                <Route path="/about/:id" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/login" element={<Login />} />
             </Routes>
