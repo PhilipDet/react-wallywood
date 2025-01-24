@@ -31,7 +31,7 @@ export const App = () => {
                         element={<h3>Poster details</h3>}
                     />
                 </Route>
-                <Route path="/about/:id" element={<About />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/login" element={<Login />} />
             </Routes>

@@ -1,46 +1,32 @@
 import styled from "styled-components";
 
 export const PostersStyled = styled.div`
-    display: flex;
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 1fr 3fr;
+    flex: 1;
 
     .genre {
         display: flex;
         flex-direction: column;
-        width: 200px;
         border-right: 1.6px solid #5c1f06;
-        margin-right: 40px;
 
         ul {
             list-style: none;
 
             li {
                 cursor: pointer;
+                display: flex;
 
                 a {
+                    width: 100%;
                     font-size: 1.4rem;
+
+                    &:hover {
+                        color: #d97852;
+                    }
                 }
             }
-        }
-    }
-
-    .posters {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 40px;
-        width: 100%;
-        justify-content: center;
-
-        strong {
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 1; /* number of lines to show */
-            line-clamp: 1;
-            -webkit-box-orient: vertical;
-        }
-
-        img {
-            width: 100%;
-            height: 375px;
         }
     }
 `;

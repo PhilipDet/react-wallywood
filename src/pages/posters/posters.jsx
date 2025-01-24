@@ -1,15 +1,18 @@
 import { PostersStyled } from "./posters.styled";
 import { useEffect, useState } from "react";
-import { Outlet, useParams, useNavigate, useLocation } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import supabase from "../../utils/supabaseClient";
 
 export const Posters = () => {
     const { genre_id } = useParams();
-    const location = useLocation();
-    const posterLength = location.state?.postersLength;
 
     const [genres, setGenres] = useState([]);
-    const [selectedGenre, setSelectedGenre] = useState(genre_id);
+    const [selectedGenre, setSelectedGenre] = useState(Number(genre_id));
+    const [genreTitle, setGenreTitle] = useState(
+        genres.length > 0
+            ? genres.find((genre) => genre.id === selectedGenre)?.title
+            : ""
+    );
     const [loading, setLoading] = useState(true);
 
     const getGenres = async () => {
@@ -29,13 +32,21 @@ export const Posters = () => {
 
     const changeGenre = (genreId) => {
         setSelectedGenre(genreId);
+        setGenreTitle(
+            genres ? genres.find((genre) => genre.id === genreId)?.title : ""
+        );
     };
 
     useEffect(() => {
         let hasRendered = false;
         if (loading) {
             const fetchData = async () => {
-                setGenres(await getGenres());
+                const newGenres = await getGenres();
+                setGenres(newGenres);
+                const newGenreTitle = newGenres.find(
+                    (genre) => genre.id === selectedGenre
+                )?.title;
+                setGenreTitle(newGenreTitle);
                 setLoading(false);
             };
 
@@ -60,18 +71,7 @@ export const Posters = () => {
                 </ul>
             </div>
 
-            <ul>
-                <li>
-                    <h3>
-                        {`${
-                            genres.find((genre) => genre.id === selectedGenre)
-                                ?.title
-                        } - ${posterLength} plakater`}
-                    </h3>
-                </li>
-            </ul>
-
-            <Outlet context={{ selectedGenre }} />
+            <Outlet context={{ selectedGenre, genreTitle }} />
         </PostersStyled>
     );
 };
