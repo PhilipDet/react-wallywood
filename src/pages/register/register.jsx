@@ -1,11 +1,11 @@
-import { LoginStyled } from "./login.styled";
-import { Button } from "../../components/button/button";
-import { useUser } from "../../provider/user";
-import { useForm } from "react-hook-form";
-import { useNavigate, Link } from "react-router-dom";
+import { RegisterStyled } from "./register.styled";
 import supabase from "../../utils/supabaseClient";
+import { useForm } from "react-hook-form";
+import { Button } from "../../components/button/button";
+import { Link, useNavigate } from "react-router-dom";
+import { useUser } from "../../provider/user";
 
-export const Login = () => {
+export const Register = () => {
     const { setUser } = useUser();
 
     const fetchUser = async () => {
@@ -26,7 +26,7 @@ export const Login = () => {
 
     const onSubmit = async ({ email, password }) => {
         try {
-            const { user, error } = await supabase.auth.signInWithPassword({
+            const { user, error } = await supabase.auth.signUp({
                 email,
                 password,
             });
@@ -37,19 +37,19 @@ export const Login = () => {
 
             fetchUser();
 
-            navigate("/");
+            navigate("/login");
         } catch (err) {
             console.error("Err: ", err);
         }
     };
 
     return (
-        <LoginStyled>
+        <RegisterStyled>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
                     <label htmlFor="email">Email:</label>
                     <input {...register("email", { required: true })} />
-                    {errors.email && <span>Du skal skrive din email</span>}
+                    {errors.email && <span>Du skal skrive en email</span>}
                 </div>
 
                 <div className="form-group">
@@ -59,18 +59,17 @@ export const Login = () => {
                         {...register("password", { required: true })}
                     />
                     {errors.password && (
-                        <span>Du skal skrive din adgangskode</span>
+                        <span>Du skal skrive en adgangskode</span>
                     )}
                 </div>
 
                 <div className="actions">
-                    <Button type="submit">Login</Button>
+                    <Button type="submit">Opret</Button>
                     <Button type="reset">Annuller</Button>
                 </div>
 
-                <a href="#">Glemt Adgangskode?</a>
-                <Link to="/register">Opret Profil</Link>
+                <Link to="/login">Har allerede en profil?</Link>
             </form>
-        </LoginStyled>
+        </RegisterStyled>
     );
 };

@@ -18,7 +18,7 @@ export const Headline = () => {
             case "/login":
                 return <h2>Login</h2>;
             case "/register":
-                return <h2>Registering</h2>;
+                return <h2>Registering af Profil</h2>;
             default:
                 if (path.includes("/posters")) {
                     return <h2>Plakater</h2>;

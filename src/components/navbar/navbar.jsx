@@ -1,23 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { useUser } from "../../provider/user";
+import { NavbarStyled } from "./navbar.styled";
+import { NavLink, useNavigate } from "react-router-dom";
 import supabase from "../../utils/supabaseClient";
 
-import { NavbarStyled } from "./navbar.styled";
-import { NavLink } from "react-router-dom";
-
 export const Navbar = () => {
-    const [userEmail, setUserEmail] = useState(null);
+    const { user, setUser } = useUser();
 
-    useEffect(() => {
-        const checkUser = async () => {
-            const {
-                data: { user },
-            } = await supabase.auth.getUser();
-            if (user) {
-                setUserEmail(user.email);
-            }
-        };
-        checkUser();
-    }, []);
+    const navigate = useNavigate();
+
+    const logOut = async () => {
+        await supabase.auth.signOut();
+        setUser(null);
+        navigate("/login");
+    };
 
     return (
         <NavbarStyled>
@@ -38,9 +33,11 @@ export const Navbar = () => {
                     <NavLink to="/contact">Kontakt Os</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/login">
-                        {userEmail ? "Logged In" : "Login"}
-                    </NavLink>
+                    {user !== null ? (
+                        <a onClick={() => logOut()}>Log ud</a>
+                    ) : (
+                        <NavLink to="/login">Login</NavLink>
+                    )}
                 </li>
                 <li>
                     <NavLink to="/cart">

@@ -10,6 +10,7 @@ import { Posters } from "./pages/posters/posters";
 import { About } from "./pages/about/about";
 import { Contact } from "./pages/contact/contact";
 import { Login } from "./pages/login/login";
+import { Register } from "./pages/register/register";
 
 // Components
 import { PosterList } from "./components/posterList/posterList";
@@ -35,6 +36,7 @@ export const App = () => {
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
             </Routes>
             <Footer />
         </>

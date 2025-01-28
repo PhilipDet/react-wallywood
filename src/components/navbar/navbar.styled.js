@@ -21,6 +21,7 @@ export const NavbarStyled = styled.nav`
                 font-size: 1.8rem;
                 text-transform: uppercase;
                 font-weight: 300;
+                cursor: pointer;
             }
 
             &:first-child {
