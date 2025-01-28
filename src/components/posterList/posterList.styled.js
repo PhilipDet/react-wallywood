@@ -9,12 +9,26 @@ export const PosterListStyled = styled.div`
     ul {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         list-style: none;
 
         li {
             h3 {
                 font-size: 2rem;
                 text-transform: capitalize;
+            }
+
+            select {
+                padding: 10px;
+                font-size: 1.4rem;
+                border: none;
+                border-top: 1px solid #d1b3a7;
+                background-color: #f8f6f5;
+                width: 200px;
+
+                &:focus {
+                    outline: none;
+                }
             }
         }
     }

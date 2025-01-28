@@ -59,9 +59,6 @@ export const PosterList = () => {
                 const newPosters = await fetchPosters();
                 setPosters(newPosters);
                 setLoading(false);
-                navigate(`/posters/${selectedGenre}`, {
-                    state: { postersLength: newPosters.length },
-                });
             };
 
             fetchData();
@@ -71,6 +68,24 @@ export const PosterList = () => {
     useEffect(() => {
         !loading && setLoading(true);
     }, [selectedGenre, sortBy]);
+
+    const getSortBy = (value) => {
+        switch (value) {
+            default:
+            case "nameASC":
+                return ["name", true];
+            case "nameDESC":
+                return ["name", false];
+            case "priceASC":
+                return ["price", true];
+            case "priceDESC":
+                return ["price", false];
+        }
+    };
+
+    const showPoster = (id) => {
+        navigate(`/posters/${selectedGenre}/${id}`);
+    };
 
     return (
         <PosterListStyled>
@@ -83,27 +98,7 @@ export const PosterList = () => {
                 <li>
                     <select
                         onChange={(e) => {
-                            let newSortBy = [];
-
-                            switch (e.target.value) {
-                                default:
-                                case "nameASC":
-                                    newSortBy = ["name", true];
-                                    break;
-                                case "nameDESC":
-                                    newSortBy = ["name", false];
-                                    break;
-                                case "priceASC":
-                                    newSortBy = ["price", true];
-                                    break;
-                                case "priceDESC":
-                                    newSortBy = ["price", false];
-                                    break;
-                            }
-
-                            console.log(newSortBy);
-
-                            setSortBy(newSortBy);
+                            setSortBy(getSortBy(e.target.value));
                         }}
                     >
                         <option value="nameASC">Navn: A - Å</option>
@@ -121,7 +116,11 @@ export const PosterList = () => {
                     </div>
                 ) : (
                     posters.map((poster) => (
-                        <Poster key={poster.id} poster={poster} />
+                        <Poster
+                            key={poster.id}
+                            poster={poster}
+                            showPoster={() => showPoster(poster.id)}
+                        />
                     ))
                 )}
             </div>

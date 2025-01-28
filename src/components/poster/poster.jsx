@@ -18,7 +18,7 @@ export const FrontpagePoster = ({ poster }) => {
                         : poster.description}
                 </p>
                 <div className="actions">
-                    <Button>Læs mere</Button>
+                    <Button onClick={() => showPoster()}>Læs mere</Button>
                     <Button type="square">
                         <FaRegHeart />
                     </Button>
@@ -28,9 +28,9 @@ export const FrontpagePoster = ({ poster }) => {
     );
 };
 
-export const Poster = ({ poster }) => {
+export const Poster = ({ poster, showPoster }) => {
     return (
-        <PosterStyled>
+        <PosterStyled onClick={showPoster}>
             <img src={poster.image} alt={poster.name} />
             <div className="information">
                 <strong>{poster.name}</strong>

@@ -6,8 +6,8 @@ export const FrontpagePosterStyled = styled.div`
     max-width: 490px;
 
     img {
-        height: 208px;
         width: 140px;
+        height: 208px;
     }
 
     .information {

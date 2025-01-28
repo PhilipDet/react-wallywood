@@ -13,6 +13,7 @@ import { Login } from "./pages/login/login";
 
 // Components
 import { PosterList } from "./components/posterList/posterList";
+import { PosterDetails } from "./components/posterDetails/posterDetails";
 
 export const App = () => {
     return (
@@ -28,7 +29,7 @@ export const App = () => {
                     <Route path=":genre_id" element={<PosterList />} />
                     <Route
                         path=":genre_id/:poster_id"
-                        element={<h3>Poster details</h3>}
+                        element={<PosterDetails />}
                     />
                 </Route>
                 <Route path="/about" element={<About />} />
