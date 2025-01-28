@@ -1,16 +1,21 @@
+import { LoginForm } from "../../components/loginForm/loginform";
 import { LoginStyled } from "./login.styled";
-import { Button } from "../../components/button/button";
 
 export const Login = () => {
-    const handleSubmit = (event) => {
+    /*     const handleSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData);
         console.log(data);
-    };
+    }; */
 
     return (
         <LoginStyled>
+            <LoginForm />
+        </LoginStyled>
+
+        /* <LoginStyled>
+    
             <form onSubmit={(event) => handleSubmit(event)}>
                 <div className="form-group">
                     <label htmlFor="email">Dit Email:</label>
@@ -42,6 +47,6 @@ export const Login = () => {
                 <a href="#">Glemt Adgangskode?</a>
                 <a href="#">Opret Profil</a>
             </form>
-        </LoginStyled>
+        </LoginStyled> */
     );
 };
