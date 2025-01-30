@@ -47,14 +47,18 @@ export const Login = () => {
         <LoginStyled>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
-                    <label htmlFor="email">Email:</label>
-                    <input {...register("email", { required: true })} />
+                    <label htmlFor="email">Din Email:</label>
+                    <input
+                        placeholder="Indtast din email"
+                        {...register("email", { required: true })}
+                    />
                     {errors.email && <span>Du skal skrive din email</span>}
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="password">Adgangskode:</label>
+                    <label htmlFor="password">Din adgangskode:</label>
                     <input
+                        placeholder="Indtast din adgangskode"
                         type="password"
                         {...register("password", { required: true })}
                     />
