@@ -67,6 +67,18 @@ export const PosterListStyled = styled.div`
         }
     }
 
+    @media (max-width: 768px) {
+        .posters {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .posters {
+            grid-template-columns: 1fr;
+        }
+    }
+
     .loading {
         height: 100%;
         grid-column: 1 / -1;

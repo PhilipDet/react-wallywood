@@ -15,5 +15,13 @@ export const HomeStyled = styled.div`
         grid-template-columns: 1fr 1fr;
         flex: 1;
         gap: 40px 20px;
+        margin-bottom: 40px;
+    }
+
+    @media (max-width: 768px) {
+        .posters {
+            grid-template-columns: 1fr;
+            
+        }
     }
 `;

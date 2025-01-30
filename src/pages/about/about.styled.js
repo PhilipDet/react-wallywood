@@ -16,4 +16,16 @@ export const AboutStyled = styled.div`
     img {
         width: 100%;
     }
+
+    @media (max-width: 768px) {
+       gap: 20px;
+    }
+
+    @media (max-width: 400px) {
+        grid-template-columns: 1fr;
+
+        img {
+            margin-bottom: 20px;
+        }
+    }
 `;

@@ -41,4 +41,31 @@ export const FooterStyled = styled.footer`
             }
         }
     }
+
+    @media (max-width: 768px) {
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .footer-left {
+                width: 100%;
+                justify-content: space-between;
+                gap: 2rem;
+            }
+
+            .footer-right {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    }
+
+    @media (max-width: 400px) {
+       .footer-left {
+            flex-direction: column;
+            gap: 1rem;
+            text-align: center;
+       }
+    }
 `;
