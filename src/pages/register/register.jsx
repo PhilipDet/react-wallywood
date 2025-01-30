@@ -4,14 +4,15 @@ import { useForm } from "react-hook-form";
 import { Button } from "../../components/button/button";
 import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "../../provider/user";
+import { GetUser } from "../../hooks/fetch";
 
 export const Register = () => {
     const { setUser } = useUser();
 
     const fetchUser = async () => {
-        const userInfo = await supabase.auth.getUser();
-        if (userInfo.data.user !== null) {
-            setUser(userInfo.data.user);
+        const userInfo = await GetUser();
+        if (userInfo !== null) {
+            setUser(userInfo);
         } else {
             setUser(null);
         }

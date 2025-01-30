@@ -1,7 +1,7 @@
 import { PosterListStyled } from "./posterList.styled";
 import React, { useEffect, useState } from "react";
 import { Poster } from "../poster/poster";
-import supabase from "../../utils/supabaseClient";
+import { GetData } from "../../hooks/fetch";
 import { useOutletContext, useNavigate } from "react-router-dom";
 import { Spinner } from "../spinner/spinner";
 
@@ -12,31 +12,33 @@ export const PosterList = () => {
     const [sortBy, setSortBy] = useState(["name", true]);
     const [loading, setLoading] = useState(true);
 
-    const fetchPosters = async () => {
-        if (supabase) {
-            return await supabase
-                .from("genre_poster_rel")
-                .select("*")
-                .eq("genre_id", selectedGenre)
-                .then(async (response) => {
-                    const relations = response.data;
+    useEffect(() => {
+        if (loading) {
+            const fetchData = async () => {
+                try {
+                    const responses = await GetData("genre_poster_rel", [
+                        "genre_id",
+                        selectedGenre,
+                    ]);
 
-                    let posters = await Promise.all(
-                        relations.map(async (rel) => {
+                    const newPosters = await Promise.all(
+                        responses.map(async (res) => {
                             try {
-                                const response = await supabase
-                                    .from("posters")
-                                    .select("*")
-                                    .eq("id", rel.poster_id);
-                                return response.data[0];
+                                const response = await GetData("posters", [
+                                    "id",
+                                    res.poster_id,
+                                ]);
+                                return response[0];
                             } catch (error) {
-                                console.error("Error fetching data:", error);
-                                throw error;
+                                console.error("Error fetching poster:", error);
+                                return null;
                             }
                         })
                     );
 
-                    posters.sort((a, b) => {
+                    const filteredPosters = newPosters.filter(Boolean);
+
+                    filteredPosters.sort((a, b) => {
                         if (sortBy[1]) {
                             return a[sortBy[0]] > b[sortBy[0]] ? 1 : -1;
                         } else {
@@ -44,21 +46,12 @@ export const PosterList = () => {
                         }
                     });
 
-                    return posters;
-                })
-                .catch((error) => {
+                    setPosters(filteredPosters);
+                    setLoading(false);
+                } catch (error) {
                     console.error("Error fetching data:", error);
-                    return [];
-                });
-        }
-    };
-
-    useEffect(() => {
-        if (loading) {
-            const fetchData = async () => {
-                const newPosters = await fetchPosters();
-                setPosters(newPosters);
-                setLoading(false);
+                    setLoading(false);
+                }
             };
 
             fetchData();

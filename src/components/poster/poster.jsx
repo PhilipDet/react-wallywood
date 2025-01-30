@@ -5,8 +5,14 @@ import {
 } from "./poster.styled";
 import { FaRegHeart } from "react-icons/fa";
 import { Button } from "../button/button";
+import { useNavigate } from "react-router-dom";
 
 export const FrontpagePoster = ({ poster }) => {
+    const navigate = useNavigate();
+    const showPoster = () => {
+        navigate(`/posters/0/${poster.id}`);
+    };
+
     return (
         <FrontpagePosterStyled>
             <img src={poster.image} alt={poster.name} />
@@ -18,7 +24,7 @@ export const FrontpagePoster = ({ poster }) => {
                         : poster.description}
                 </p>
                 <div className="actions">
-                    <Button onClick={() => showPoster()}>Læs mere</Button>
+                    <Button onClick={showPoster}>Læs mere</Button>
                     <Button type="square">
                         <FaRegHeart />
                     </Button>
@@ -30,8 +36,8 @@ export const FrontpagePoster = ({ poster }) => {
 
 export const Poster = ({ poster, showPoster }) => {
     return (
-        <PosterStyled onClick={showPoster}>
-            <img src={poster.image} alt={poster.name} />
+        <PosterStyled>
+            <img onClick={showPoster} src={poster.image} alt={poster.name} />
             <div className="information">
                 <strong>{poster.name}</strong>
                 <p>Kr. {poster.price},00</p>

@@ -1,35 +1,21 @@
 import { HomeStyled } from "./home.styled";
 import { useState, useEffect } from "react";
 import { FrontpagePoster as Poster } from "../../components/poster/poster";
-import supabase from "../../utils/supabaseClient";
+import { GetData } from "../../hooks/fetch";
 
 export const Home = () => {
     const [posters, setPosters] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const getData = async () => {
-        if (supabase) {
-            return await supabase
-                .from("posters")
-                .select("*")
-                .then((response) => {
-                    const shuffledPosters = response.data.sort(
-                        () => 0.5 - Math.random()
-                    );
-                    return shuffledPosters;
-                })
-                .catch((error) => {
-                    console.error(error);
-                    return [];
-                });
-        }
-    };
-
     useEffect(() => {
         let hasRendered = false;
         if (loading) {
             const fetchPosters = async () => {
-                const shuffledPosters = await getData();
+                const shuffledPosters = await GetData("posters").then(
+                    (response) => {
+                        return response.sort(() => 0.5 - Math.random());
+                    }
+                );
                 if (!hasRendered) {
                     setPosters(shuffledPosters);
                     setLoading(false);

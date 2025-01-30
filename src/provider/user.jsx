@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import supabase from "../utils/supabaseClient";
+import { GetUser } from "../hooks/fetch";
 
 const UserContext = createContext();
 
@@ -7,9 +7,10 @@ export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     const fetchUser = async () => {
-        const userInfo = await supabase.auth.getUser();
-        if (userInfo.data.user !== null) {
-            setUser(userInfo.data.user);
+        const userInfo = await GetUser();
+
+        if (userInfo !== null) {
+            setUser(userInfo);
         } else {
             setUser(null);
         }
