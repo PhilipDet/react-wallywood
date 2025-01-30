@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useUser } from "../../provider/user";
 import { NavbarStyled } from "./navbar.styled";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -5,8 +6,8 @@ import supabase from "../../utils/supabaseClient";
 
 export const Navbar = () => {
     const { user, setUser } = useUser();
-
     const navigate = useNavigate();
+    const [isOpen, setIsOpen] = useState(false);
 
     const logOut = async () => {
         await supabase.auth.signOut();
@@ -14,9 +15,16 @@ export const Navbar = () => {
         navigate("/login");
     };
 
+    const toggleNavbar = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
         <NavbarStyled>
-            <ul>
+            <button className="toggle-button" onClick={toggleNavbar}>
+                ☰
+            </button>
+            <ul className={isOpen ? "open" : ""}>
                 <li>
                     <NavLink to="/">Wallywood</NavLink>
                 </li>

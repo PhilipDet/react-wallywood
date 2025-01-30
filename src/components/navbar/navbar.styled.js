@@ -2,6 +2,20 @@ import styled from "styled-components";
 
 export const NavbarStyled = styled.nav`
     width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+
+    .toggle-button {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 2; /* Ensure the button stays on top */
+    }
 
     ul {
         display: flex;
@@ -37,7 +51,39 @@ export const NavbarStyled = styled.nav`
         }
     }
 
-    @media (max-width: 768px) {
-        
+    @media (max-width: 1043px) {
+        .toggle-button {
+            display: block;
+        }
+
+        ul {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+
+            &.open {
+                display: flex;
+            }
+
+            li {
+                width: 100%;
+                text-align: center;
+
+                a {
+                    padding: 10px 0;
+                    width: 100%;
+                    display: block;
+                }
+            }
+        }
+        @media (max-width: 400px) {
+            ul li a {
+                font-size: 1.7rem; /* Adjusted font size for smaller screens */
+            }
+
+            ul li:first-child a {
+                font-size: 2rem; /* Adjusted font size for the first child on smaller screens */
+            }
+        }
     }
 `;
