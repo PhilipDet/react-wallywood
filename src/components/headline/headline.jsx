@@ -10,7 +10,7 @@ export const Headline = () => {
     const headlineText = () => {
         switch (path) {
             case "/":
-                return <img src="/assets/curtain.jpg" />;
+                return <img src="./src/assets/curtain.jpg" />;
             case "/about":
                 return <h2>Om os</h2>;
             case "/contact":

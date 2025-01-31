@@ -1,8 +1,26 @@
-# React + Vite
+# Velkommen til Wallywood React Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Følg nedenstående trin for at downloade og starte websitet.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Klon repository**:
+    ```bash
+    git clone https://github.com/PhilipDet/react-wallywood.git
+    ```
+2. **Naviger til projektmappen**:
+    ```bash
+    cd react-wallywood
+    ```
+3. **Installer afhængigheder**:
+    ```bash
+    npm install
+    ```
+
+## Start websitet
+
+1. **Kør serveren**:
+    ```bash
+    npm run dev
+    ```
+2. Åbn din browser og gå til [http://localhost:5173](http://localhost:5173) for at se websitet i aktion.
