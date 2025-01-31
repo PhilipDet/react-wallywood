@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { PosterDetailsStyled } from "./posterDetails.styled";
 import { useEffect, useState } from "react";
-import supabase from "../../utils/supabaseClient";
+import { GetData } from "../../hooks/fetch";
 import { FaRegHeart } from "react-icons/fa";
 import { Button } from "../button/button";
 import { Spinner } from "../spinner/spinner";
@@ -11,23 +11,11 @@ export const PosterDetails = () => {
     const [poster, setPoster] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const fetchPoster = async () => {
-        if (supabase) {
-            return supabase
-                .from("posters")
-                .select("*")
-                .eq("id", poster_id)
-                .then((response) => {
-                    return response.data[0];
-                });
-        }
-    };
-
     useEffect(() => {
         if (loading) {
             const fetchData = async () => {
-                const newPoster = await fetchPoster();
-                setPoster(newPoster);
+                const newPoster = await GetData("posters", ["id", poster_id]);
+                setPoster(newPoster[0]);
                 setLoading(false);
             };
 
