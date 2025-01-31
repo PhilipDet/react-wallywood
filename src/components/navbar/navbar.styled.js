@@ -14,7 +14,17 @@ export const NavbarStyled = styled.nav`
         position: absolute;
         top: 10px;
         right: 10px;
-        z-index: 2; /* Ensure the button stays on top */
+        z-index: 2;
+    }
+
+    .logo {
+        display: none;
+        color: #d97852;
+        font-weight: 900;
+        font-size: 5.4rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-family: "Titillium Web", serif;
     }
 
     ul {
@@ -56,6 +66,14 @@ export const NavbarStyled = styled.nav`
             display: block;
         }
 
+        .logo {
+            display: block;
+        }
+
+        .mobilelogo {
+            display: none;
+        }
+
         ul {
             display: none;
             flex-direction: column;
@@ -78,11 +96,11 @@ export const NavbarStyled = styled.nav`
         }
         @media (max-width: 400px) {
             ul li a {
-                font-size: 1.7rem; /* Adjusted font size for smaller screens */
+                font-size: 1.7rem;
             }
 
             ul li:first-child a {
-                font-size: 2rem; /* Adjusted font size for the first child on smaller screens */
+                font-size: 2rem;
             }
         }
     }

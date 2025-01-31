@@ -21,12 +21,16 @@ export const Navbar = () => {
 
     return (
         <NavbarStyled>
+            <NavLink className="logo" to="/">
+                Wallywood
+            </NavLink>
+
             <button className="toggle-button" onClick={toggleNavbar}>
                 ☰
             </button>
             <ul className={isOpen ? "open" : ""}>
                 <li>
-                    <NavLink to="/">Wallywood</NavLink>
+                    <NavLink className="mobilelogo" to="/">WALLYWOOD</NavLink>
                 </li>
                 <li>
                     <NavLink to="/">Home</NavLink>

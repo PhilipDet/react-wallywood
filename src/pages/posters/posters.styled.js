@@ -36,7 +36,7 @@ export const PostersStyled = styled.div`
         .genre {
             border-right: none;
             display: flex;
-            flex-direction: row;
+    
             overflow-x: auto;
             white-space: nowrap;
 
@@ -46,7 +46,7 @@ export const PostersStyled = styled.div`
 
             ul {
                 display: flex;
-                flex-direction: row;
+            
                 li {
                     flex: 0 0 auto;
 
