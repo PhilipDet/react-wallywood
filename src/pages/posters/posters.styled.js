@@ -29,4 +29,37 @@ export const PostersStyled = styled.div`
             }
         }
     }
+
+    @media (max-width: 1043px) {
+        grid-template-columns: 1fr;
+
+        .genre {
+            border-right: none;
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto;
+            white-space: nowrap;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            ul {
+                display: flex;
+                flex-direction: row;
+                li {
+                    flex: 0 0 auto;
+
+                    a {
+                        padding: 5px;
+                        border-right: 1px solid #5c1f06; 
+                    }
+
+                    &:last-child a {
+                        border-right: none;
+                    }
+                }
+            }
+        }
+    }
 `;
