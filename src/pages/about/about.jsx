@@ -73,7 +73,7 @@ export const About = () => {
                     at în nisl.
                 </p>
             </div>
-            <img src="../../assets/star.png" alt="" />
+            <img src="/src/assets/star.png" alt="" />
         </AboutStyled>
     );
 };
